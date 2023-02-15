@@ -8,6 +8,7 @@ class Appointments extends Component {
     appointmentsList: [],
     title: '',
     date: '',
+    isFilterActive: false,
   }
 
   onChangeTitle = event => {
@@ -34,13 +35,20 @@ class Appointments extends Component {
   }
 
   displayStarredList = () => {
-    const {appointmentsList} = this.state
-    const starredAppointmentsList = appointmentsList.filter(
-      eachAppointment => eachAppointment.isStarred === true,
-    )
+    const {isFilterActive} = this.state
     this.setState({
-      appointmentsList: starredAppointmentsList,
+      isFilterActive: !isFilterActive,
     })
+  }
+
+  getFilteredAppointmentsList = () => {
+    const {appointmentsList, isFilterActive} = this.state
+    if (isFilterActive) {
+      return appointmentsList.filter(
+        eachTransaction => eachTransaction.isStarred === true,
+      )
+    }
+    return appointmentsList
   }
 
   onAddAppointment = event => {
@@ -60,7 +68,9 @@ class Appointments extends Component {
   }
 
   render() {
-    const {title, date, appointmentsList} = this.state
+    const {title, date, isFilterActive} = this.state
+    const filterClassName = isFilterActive ? 'filter-filled' : 'filter-empty'
+    const filteredAppointmentsList = this.getFilteredAppointmentsList()
 
     return (
       <div className="bg-container">
@@ -106,7 +116,7 @@ class Appointments extends Component {
             <div className="appoint-star-container">
               <h1 className="lower-heading">Appointments</h1>
               <button
-                className="starred-btn"
+                className={`filter-style ${filterClassName}`}
                 type="button"
                 onClick={this.displayStarredList}
               >
@@ -114,7 +124,7 @@ class Appointments extends Component {
               </button>
             </div>
             <ul className="appointments-list">
-              {appointmentsList.map(eachAppointment => (
+              {filteredAppointmentsList.map(eachAppointment => (
                 <AppointmentItem
                   key={eachAppointment.id}
                   appointment={eachAppointment}

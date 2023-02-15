@@ -136,16 +136,28 @@
   color: #171f46;
 }
 
-.starred-btn {
-  height: 36px;
-  background-color: #fff;
-  border: solid 2px #8b5cf6;
-  color: #9897f0;
+.filter-style {
   font-family: 'Roboto';
-  font-size: 16px;
-  padding: 8px 20px 8px 20px;
-  border-radius: 20px;
-  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 25px;
+  padding-left: 16px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-right: 16px;
+  border: none;
+  outline: none;
+}
+
+.filter-filled {
+  color: #ffffff;
+  background-color: #9897f0;
+}
+
+.filter-empty {
+  color: #9897f0;
+  background-color: white;
+  border: 1px solid #9897f0;
 }
 
 .appointments-list {
