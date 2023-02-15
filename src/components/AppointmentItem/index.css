@@ -1,0 +1,42 @@
+.appointment-item-container {
+  list-style-type: none;
+  border: solid 1px #b5b7c4;
+  margin: 15px;
+  border-radius: 20px;
+  padding: 10px 15px 10px 15px;
+  width: 90%;
+}
+
+@media screen and (min-width: 768px) {
+  .appointment-item-container {
+    width: 35%;
+    max-width: 300px;
+  }
+}
+
+.title-star-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Roboto';
+}
+
+.title {
+  font-size: 16px;
+  color: #171f46;
+  font-weight: 600;
+}
+
+.star-btn {
+  background-color: transparent;
+  border-style: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.date-type {
+  color: #b5b7c4;
+  font-size: 13px;
+  font-weight: 600;
+}
